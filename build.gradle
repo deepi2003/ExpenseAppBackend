@@ -1,0 +1,39 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+
+group = 'org.deepti.app.expenseTracker'
+version = '0.0.1-SNAPSHOT'
+
+description = "Expense Tracker app backend"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+repositories {
+
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'org.projectlombok', name:'lombok', version: '1.16.12'
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.3.RELEASE')
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.3.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+}
